@@ -1,3 +1,13 @@
+"use client";
+
+import { Appbar } from "@repo/ui/appBar";
+import { signIn, signOut, useSession } from "next-auth/react";
+
 export default function Home() {
-  return <main className={"bg-black text-white py-4 px-10"}>Home</main>;
+  const session = useSession();
+  return (
+    <div>
+      <Appbar onSignin={signIn} onSignout={signOut} user={session.data?.user} />
+    </div>
+  );
 }
